@@ -24,8 +24,8 @@ public class AnswerEntity {
     Integer likes;
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
-    @OneToMany(mappedBy="ANSWER_TBL", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy="id", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
     List<CommentEntity> comments;
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     QuestionEntity questionEntity;
 }

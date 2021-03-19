@@ -58,6 +58,8 @@ public class QuestionService {
        questionEntity.setCreatedBy(questionDTO.getCreatedBy());
        questionEntity.setCreatedOn(questionDTO.getCreatedOn());
        questionEntity.setUpdatedOn(LocalDateTime.now());
+       questionEntity.setComments(questionDTO.getComments());
+       questionEntity.setAnswers(questionDTO.getAnswers());
        return questionsMapper.entityToDTO(questionRepository.save(questionEntity));
     }
 

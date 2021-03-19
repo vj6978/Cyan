@@ -25,8 +25,8 @@ public class CommentEntity {
     Integer likes;
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     QuestionEntity questionEntity;
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     AnswerEntity answerEntity;
 }

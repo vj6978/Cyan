@@ -26,8 +26,8 @@ public class QuestionEntity {
     String createdBy;
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
-    @OneToMany(mappedBy="QUESTION_TBL", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy="id", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
     List<CommentEntity> comments;
-    @OneToMany(mappedBy="QUESTION_TBL", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy="id", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
     List<AnswerEntity> answers;
 }

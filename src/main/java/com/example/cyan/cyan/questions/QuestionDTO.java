@@ -1,5 +1,6 @@
 package com.example.cyan.cyan.questions;
 
+import com.example.cyan.cyan.answers.AnswerEntity;
 import com.example.cyan.cyan.comments.CommentEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,4 +20,5 @@ public class QuestionDTO {
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
     List<CommentEntity> comments;
+    List<AnswerEntity> answers;
 }

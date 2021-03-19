@@ -1,5 +1,8 @@
 package com.example.cyan.cyan.comments;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CommentMapper {
     public CommentEntity dtoToEntity(CommentDTO commentDTO){
         CommentEntity commentEntity = new CommentEntity();
