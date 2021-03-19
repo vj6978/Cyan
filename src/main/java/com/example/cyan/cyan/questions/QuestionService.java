@@ -30,6 +30,16 @@ public class QuestionService {
         throw new QuestionNotFoundException(ErrorConstants.NO_QUESTION_FOUND);
     }
 
+    public List<QuestionDTO> getQuestionByTag(String tag){
+        return questionRepository.findAll(QuestionJPAHelperSpecification.containsTag(tag))
+                .stream().map(q -> questionsMapper.entityToDTO(q)).collect(Collectors.toList());
+    }
+
+    public List<QuestionDTO> getQuestionByKeyword(String keyword){
+        return questionRepository.findAll(QuestionJPAHelperSpecification.containskeywordInQuestion(keyword))
+                .stream().map(q -> questionsMapper.entityToDTO(q)).collect(Collectors.toList());
+    }
+
     public QuestionDTO postQuestion(QuestionDTO questionDTO){
         questionDTO.setCreatedOn(LocalDateTime.now());
         QuestionEntity questionEntity = questionsMapper.dtoToEntity(questionDTO);

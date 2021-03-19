@@ -19,12 +19,22 @@ public class QuestionController {
         return ResponseEntity.ok().body(questionService.getAll());
     }
 
-    @GetMapping("/question/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<QuestionDTO> getQuestion(@PathVariable String id) throws QuestionNotFoundException {
         return ResponseEntity.ok().body(questionService.getQuestion(id));
     }
 
-    @PostMapping("/question")
+    @GetMapping("/search/tag")
+    public ResponseEntity<List<QuestionDTO>> searchByTag(@RequestBody QuestionSearchDTO questionSearchDTO){
+        return ResponseEntity.ok().body(questionService.getQuestionByTag(questionSearchDTO.getTag()));
+    }
+
+    @GetMapping("/search/keyword")
+    public ResponseEntity<List<QuestionDTO>> searchByKeyword(@RequestBody QuestionSearchDTO questionSearchDTO){
+        return ResponseEntity.ok().body(questionService.getQuestionByKeyword(questionSearchDTO.getKeyword()));
+    }
+
+    @PostMapping("/new")
     public ResponseEntity<QuestionDTO> postQuestion(@RequestBody QuestionDTO questionDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(questionService.postQuestion(questionDTO));
     }
