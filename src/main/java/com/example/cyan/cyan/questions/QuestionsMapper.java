@@ -1,7 +1,5 @@
-package com.example.cyan.cyan.mapper;
+package com.example.cyan.cyan.questions;
 
-import com.example.cyan.cyan.questions.QuestionDTO;
-import com.example.cyan.cyan.questions.QuestionEntity;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,6 +10,7 @@ public class QuestionsMapper {
         questionEntity.setTags(questionDTO.getTags());
         questionEntity.setCreatedBy(questionDTO.getCreatedBy());
         questionEntity.setCreatedOn(questionDTO.getCreatedOn());
+        questionEntity.setUpdatedOn(questionDTO.getUpdatedOn());
         return questionEntity;
     }
 
@@ -22,6 +21,7 @@ public class QuestionsMapper {
         questionDTO.setTags(questionEntity.getTags());
         questionDTO.setCreatedBy(questionEntity.getCreatedBy());
         questionDTO.setCreatedOn(questionEntity.getCreatedOn());
+        questionDTO.setUpdatedOn(questionEntity.getUpdatedOn());
         return questionDTO;
     }
 }

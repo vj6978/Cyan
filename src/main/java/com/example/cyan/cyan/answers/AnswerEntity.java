@@ -1,9 +1,8 @@
-package com.example.cyan.cyan.questions;
+package com.example.cyan.cyan.answers;
 
-import com.example.cyan.cyan.answers.AnswerEntity;
 import com.example.cyan.cyan.comments.CommentEntity;
+import com.example.cyan.cyan.questions.QuestionEntity;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -14,20 +13,19 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name="QUESTION_TBL")
-@NoArgsConstructor
-public class QuestionEntity {
+@Table(name="ANSWER_TBL")
+public class AnswerEntity {
     @Id
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     String id;
-    String question;
-    String tags;
+    String answer;
     String createdBy;
+    Integer likes;
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
-    @OneToMany(mappedBy="QUESTION_TBL", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy="ANSWER_TBL", cascade=CascadeType.ALL, orphanRemoval=true)
     List<CommentEntity> comments;
-    @OneToMany(mappedBy="QUESTION_TBL", cascade=CascadeType.ALL, orphanRemoval=true)
-    List<AnswerEntity> answers;
+    @ManyToOne
+    QuestionEntity questionEntity;
 }

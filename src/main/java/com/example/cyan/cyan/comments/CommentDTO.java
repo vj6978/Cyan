@@ -1,22 +1,19 @@
-package com.example.cyan.cyan.questions;
+package com.example.cyan.cyan.comments;
 
-import com.example.cyan.cyan.comments.CommentEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class QuestionDTO {
+public class CommentDTO {
     String id;
-    String question;
-    String tags;
+    String comment;
     String createdBy;
+    Integer likes;
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
-    List<CommentEntity> comments;
 }

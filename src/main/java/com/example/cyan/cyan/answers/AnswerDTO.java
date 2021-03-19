@@ -1,4 +1,4 @@
-package com.example.cyan.cyan.questions;
+package com.example.cyan.cyan.answers;
 
 import com.example.cyan.cyan.comments.CommentEntity;
 import lombok.Getter;
@@ -11,11 +11,11 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class QuestionDTO {
+public class AnswerDTO {
     String id;
-    String question;
-    String tags;
+    String answer;
     String createdBy;
+    Integer likes;
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
     List<CommentEntity> comments;
