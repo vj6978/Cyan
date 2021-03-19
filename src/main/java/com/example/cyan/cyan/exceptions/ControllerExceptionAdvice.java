@@ -1,6 +1,6 @@
-package com.example.cyan.Cyan.exceptions;
+package com.example.cyan.cyan.exceptions;
 
-import com.example.cyan.Cyan.exceptions.error.APIError;
+import com.example.cyan.cyan.exceptions.error.APIError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

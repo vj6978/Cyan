@@ -1,4 +1,4 @@
-package com.example.cyan.Cyan;
+package com.example.cyan.cyan;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

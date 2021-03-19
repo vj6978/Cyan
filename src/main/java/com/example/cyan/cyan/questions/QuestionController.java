@@ -1,6 +1,6 @@
-package com.example.cyan.Cyan.questions;
+package com.example.cyan.cyan.questions;
 
-import com.example.cyan.Cyan.exceptions.QuestionNotFoundException;
+import com.example.cyan.cyan.exceptions.QuestionNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

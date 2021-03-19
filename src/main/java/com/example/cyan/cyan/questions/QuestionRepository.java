@@ -1,4 +1,4 @@
-package com.example.cyan.Cyan.questions;
+package com.example.cyan.cyan.questions;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

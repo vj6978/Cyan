@@ -1,4 +1,4 @@
-package com.example.cyan.Cyan;
+package com.example.cyan.cyan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

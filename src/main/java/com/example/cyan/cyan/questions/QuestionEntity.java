@@ -1,4 +1,4 @@
-package com.example.cyan.Cyan.questions;
+package com.example.cyan.cyan.questions;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

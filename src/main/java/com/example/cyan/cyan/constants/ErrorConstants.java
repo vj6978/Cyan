@@ -1,4 +1,4 @@
-package com.example.cyan.Cyan.constants;
+package com.example.cyan.cyan.constants;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

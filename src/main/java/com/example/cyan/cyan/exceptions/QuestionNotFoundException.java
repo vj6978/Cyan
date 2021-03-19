@@ -1,4 +1,4 @@
-package com.example.cyan.Cyan.exceptions;
+package com.example.cyan.cyan.exceptions;
 
 public class QuestionNotFoundException extends Exception {
     public QuestionNotFoundException(String errorMessage) {

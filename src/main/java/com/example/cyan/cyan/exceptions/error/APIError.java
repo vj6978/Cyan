@@ -1,4 +1,4 @@
-package com.example.cyan.Cyan.exceptions.error;
+package com.example.cyan.cyan.exceptions.error;
 
 import lombok.Getter;
 import lombok.Setter;

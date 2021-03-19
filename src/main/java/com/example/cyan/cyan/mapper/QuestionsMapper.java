@@ -1,7 +1,7 @@
-package com.example.cyan.Cyan.mapper;
+package com.example.cyan.cyan.mapper;
 
-import com.example.cyan.Cyan.questions.QuestionDTO;
-import com.example.cyan.Cyan.questions.QuestionEntity;
+import com.example.cyan.cyan.questions.QuestionDTO;
+import com.example.cyan.cyan.questions.QuestionEntity;
 import org.springframework.stereotype.Component;
 
 @Component

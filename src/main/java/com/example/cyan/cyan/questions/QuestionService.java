@@ -1,11 +1,12 @@
-package com.example.cyan.Cyan.questions;
+package com.example.cyan.cyan.questions;
 
-import com.example.cyan.Cyan.constants.ErrorConstants;
-import com.example.cyan.Cyan.exceptions.QuestionNotFoundException;
-import com.example.cyan.Cyan.mapper.QuestionsMapper;
+import com.example.cyan.cyan.constants.ErrorConstants;
+import com.example.cyan.cyan.exceptions.QuestionNotFoundException;
+import com.example.cyan.cyan.mapper.QuestionsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,22 +31,23 @@ public class QuestionService {
     }
 
     public QuestionDTO postQuestion(QuestionDTO questionDTO){
+        questionDTO.setCreatedOn(LocalDateTime.now());
         QuestionEntity questionEntity = questionsMapper.dtoToEntity(questionDTO);
         return questionsMapper.entityToDTO(questionRepository.save(questionEntity));
     }
 
     public QuestionDTO putQuestion(QuestionDTO questionDTO) throws QuestionNotFoundException {
-        QuestionEntity questionEntity = questionsMapper.dtoToEntity(questionDTO);
-        Optional<QuestionEntity> question = questionRepository.findById(questionEntity.getId());
-        if(question.isPresent()){
-            question.get().setId(questionDTO.getId());
-            question.get().setQuestion(questionDTO.getQuestion());
-            question.get().setTags(questionDTO.getTags());
-            question.get().setCreatedBy(questionDTO.getCreatedBy());
-            question.get().setCreatedOn(question.get().getCreatedOn());
-            return questionsMapper.entityToDTO(questionRepository.save(question.get()));
-        }
-        throw new QuestionNotFoundException(ErrorConstants.NO_QUESTION_FOUND);
+       Optional<QuestionEntity> question = questionRepository.findById(questionDTO.getId());
+       if(question.isEmpty()){
+           throw new QuestionNotFoundException(ErrorConstants.NO_QUESTION_FOUND);
+       }
+       QuestionEntity questionEntity = question.get();
+       questionEntity.setId(questionDTO.getId());
+       questionEntity.setQuestion(questionDTO.getQuestion());
+       questionEntity.setTags(questionDTO.getTags());
+       questionEntity.setCreatedBy(questionDTO.getCreatedBy());
+       questionEntity.setCreatedOn(LocalDateTime.now());
+       return questionsMapper.entityToDTO(questionRepository.save(questionEntity));
     }
 
     public void deleteQuestion(String id) throws QuestionNotFoundException {
@@ -53,6 +55,7 @@ public class QuestionService {
         if(question.isPresent()){
             questionRepository.delete(question.get());
         }
-        throw new QuestionNotFoundException(ErrorConstants.NO_QUESTION_FOUND);
+        else
+            throw new QuestionNotFoundException(ErrorConstants.NO_QUESTION_FOUND);
     }
 }
