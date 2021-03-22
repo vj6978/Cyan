@@ -7,4 +7,6 @@ import lombok.NoArgsConstructor;
 public class ErrorConstants {
     public static final String NO_QUESTION_FOUND = "The question you are looking for seems to be missing!";
     public static final String NO_ANSWER_FOUND = "The answer you are looking for seems to be missing!";
+    public static final String NO_COMMENT_FOUND = "The comment you are looking for seems to be missing!";
+    public static final String NO_POST_FOUND = "The post you are looking for seems to be missing!";
 }

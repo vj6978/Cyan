@@ -10,9 +10,11 @@ public interface CommentMapper {
 
     @Mapping(source="comment", target="comment")
     @Mapping(source="createdBy", target="createdBy")
+    @Mapping(source="postId", target="postId")
     CommentEntity dtoToEntity(CommentDTO commentDTO);
 
     @Mapping(source="id", target="id")
+    @Mapping(source="postId", target="postId")
     @Mapping(source="comment", target="comment")
     @Mapping(source="likes", target="likes")
     @Mapping(source="createdBy", target="createdBy")

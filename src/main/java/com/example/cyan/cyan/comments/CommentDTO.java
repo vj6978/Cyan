@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class CommentDTO {
     String id;
+    String postId;
     String comment;
     Integer likes;
     String createdBy;

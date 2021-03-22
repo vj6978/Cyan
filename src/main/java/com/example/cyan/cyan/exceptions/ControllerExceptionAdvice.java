@@ -20,4 +20,14 @@ public class ControllerExceptionAdvice extends ResponseEntityExceptionHandler {
         APIError error = new APIError(HttpStatus.NOT_FOUND, ErrorConstants.NO_ANSWER_FOUND);
         return ResponseEntity.badRequest().body(error);
     }
+    @ExceptionHandler(value={CommentNoFoundException.class})
+    public ResponseEntity<APIError> handleCommentNotFound(){
+        APIError error = new APIError(HttpStatus.NOT_FOUND, ErrorConstants.NO_COMMENT_FOUND);
+        return ResponseEntity.badRequest().body(error);
+    }
+    @ExceptionHandler(value={PostNotFoundException.class})
+    public ResponseEntity<APIError> handlePostNotFound(){
+        APIError error = new APIError(HttpStatus.NOT_FOUND, ErrorConstants.NO_POST_FOUND);
+        return ResponseEntity.badRequest().body(error);
+    }
 }
