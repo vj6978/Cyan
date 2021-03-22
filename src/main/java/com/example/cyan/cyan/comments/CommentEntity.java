@@ -26,8 +26,8 @@ public class CommentEntity {
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     String id;
     String comment;
-    String createdBy;
     Integer likes;
+    String createdBy;
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
     @ManyToOne(fetch=FetchType.LAZY)

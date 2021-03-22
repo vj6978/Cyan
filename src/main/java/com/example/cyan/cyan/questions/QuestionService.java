@@ -45,7 +45,6 @@ public class QuestionService {
         questionDTO.setCreatedOn(LocalDateTime.now());
         questionDTO.setUpdatedOn(questionDTO.getCreatedOn());
         QuestionEntity questionEntity = QuestionsMapper.INSTANCE.dtoToEntity(questionDTO);
-        QuestionsMapper.INSTANCE.entityToDTO(questionRepository.save(questionEntity));
         return QuestionsMapper.INSTANCE.entityToDTO(questionRepository.save(questionEntity));
     }
 

@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class AnswerDTO {
+    String id;
     String questionId;
     String answer;
     Integer likes;

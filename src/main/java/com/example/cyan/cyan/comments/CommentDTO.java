@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 public class CommentDTO {
     String id;
     String comment;
-    String createdBy;
     Integer likes;
+    String createdBy;
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
 }
