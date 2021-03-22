@@ -7,7 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AnswerLikeUpdateDTO {
+public class AnswerUpdateDTO {
     String answerId;
+    String answer;
     Integer likeUpdateValue;
 }

@@ -32,13 +32,13 @@ public class AnswerController {
     }
 
     @PutMapping("/answer")
-    public ResponseEntity<AnswerDTO> putAnswer(@RequestBody AnswerDTO answerDTO) throws AnswerNotFoundException {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(answerService.putAnswer(answerDTO));
+    public ResponseEntity<AnswerDTO> putAnswer(@RequestBody AnswerUpdateDTO answerUpdateDTO) throws AnswerNotFoundException {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(answerService.putAnswer(answerUpdateDTO));
     }
 
     @PutMapping("/answer/like")
-    public ResponseEntity<AnswerDTO> putAnswerLike(@RequestBody AnswerLikeUpdateDTO answerLikeUpdateDTO) throws AnswerNotFoundException {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(answerService.putAnswerLike(answerLikeUpdateDTO));
+    public ResponseEntity<AnswerDTO> putAnswerLike(@RequestBody AnswerUpdateDTO answerUpdateDTO) throws AnswerNotFoundException {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(answerService.putAnswerLike(answerUpdateDTO));
     }
 
     @DeleteMapping("/answer/{id}")

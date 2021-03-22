@@ -30,31 +30,24 @@ public class AnswerService {
         return AnswerMapper.INSTANCE.entityToDTO(answerEntity);
     }
 
-    public AnswerDTO putAnswer(AnswerDTO answerDTO) throws AnswerNotFoundException {
-        Optional<AnswerEntity> answer = answerRepository.findById(answerDTO.getId());
+    public AnswerDTO putAnswer(AnswerUpdateDTO answerUpdateDTO) throws AnswerNotFoundException {
+        Optional<AnswerEntity> answer = answerRepository.findById(answerUpdateDTO.getAnswerId());
         if(answer.isEmpty()){
             throw new AnswerNotFoundException(ErrorConstants.NO_ANSWER_FOUND);
         }
         AnswerEntity answerEntity = answer.get();
-        answerEntity.setId(answerDTO.getId());
-        answerEntity.setAnswer(answerDTO.getAnswer());
-        answerEntity.setComments(answerDTO.getComments());
-        answerEntity.setLikes(answerDTO.getLikes());
-        answerEntity.setQuestionId(answerDTO.getQuestionId());
-        answerEntity.setCreatedBy(answerDTO.getCreatedBy());
-        answerEntity.setCreatedOn(answerDTO.getCreatedOn());
-        answerEntity.setUpdatedOn(answerDTO.getUpdatedOn());
+        answerEntity.setAnswer(answerUpdateDTO.getAnswer());
         return AnswerMapper.INSTANCE.entityToDTO(answerRepository.save(answerEntity));
     }
 
-    public AnswerDTO putAnswerLike(AnswerLikeUpdateDTO answerLikeUpdateDTO) throws AnswerNotFoundException {
-        Optional<AnswerEntity> answer = answerRepository.findById(answerLikeUpdateDTO.getAnswerId());
+    public AnswerDTO putAnswerLike(AnswerUpdateDTO answerUpdateDTO) throws AnswerNotFoundException {
+        Optional<AnswerEntity> answer = answerRepository.findById(answerUpdateDTO.getAnswerId());
         if(answer.isEmpty()){
             throw new AnswerNotFoundException(ErrorConstants.NO_ANSWER_FOUND);
         }
         AnswerEntity answerEntity = answer.get();
-        answerEntity.setId(answerLikeUpdateDTO.getAnswerId());
-        answerEntity.setLikes(answerEntity.getLikes() + answerLikeUpdateDTO.getLikeUpdateValue());
+        answerEntity.setId(answerUpdateDTO.getAnswerId());
+        answerEntity.setLikes(answerEntity.getLikes() + answerUpdateDTO.getLikeUpdateValue());
         return AnswerMapper.INSTANCE.entityToDTO(answerRepository.save(answerEntity));
     }
 
