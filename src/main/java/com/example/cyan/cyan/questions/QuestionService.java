@@ -1,5 +1,6 @@
 package com.example.cyan.cyan.questions;
 
+import com.example.cyan.cyan.comments.CommentEntity;
 import com.example.cyan.cyan.constants.ErrorConstants;
 import com.example.cyan.cyan.exceptions.QuestionNotFoundException;
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -65,7 +67,9 @@ public class QuestionService {
        questionEntity.setCreatedBy(questionDTO.getCreatedBy());
        questionEntity.setCreatedOn(questionDTO.getCreatedOn());
        questionEntity.setUpdatedOn(LocalDateTime.now());
-       questionEntity.setComments(questionDTO.getComments());
+       if(questionDTO.getComments() != null){
+           questionEntity.setComments(questionDTO.getComments());
+       }
        return QuestionsMapper.INSTANCE.entityToDTO(questionRepository.save(questionEntity));
     }
 
