@@ -36,6 +36,11 @@ public class AnswerController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(answerService.putAnswer(answerDTO));
     }
 
+    @PutMapping("/answer/like")
+    public ResponseEntity<AnswerDTO> putAnswerLike(@RequestBody AnswerLikeUpdateDTO answerLikeUpdateDTO) throws AnswerNotFoundException {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(answerService.putAnswerLike(answerLikeUpdateDTO));
+    }
+
     @DeleteMapping("/answer/{id}")
     public ResponseEntity<AnswerDTO> deleteAnswer(@PathVariable String id) throws AnswerNotFoundException {
         answerService.deleteAnswer(id);

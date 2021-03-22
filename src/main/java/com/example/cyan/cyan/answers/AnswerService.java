@@ -47,6 +47,17 @@ public class AnswerService {
         return AnswerMapper.INSTANCE.entityToDTO(answerRepository.save(answerEntity));
     }
 
+    public AnswerDTO putAnswerLike(AnswerLikeUpdateDTO answerLikeUpdateDTO) throws AnswerNotFoundException {
+        Optional<AnswerEntity> answer = answerRepository.findById(answerLikeUpdateDTO.getAnswerId());
+        if(answer.isEmpty()){
+            throw new AnswerNotFoundException(ErrorConstants.NO_ANSWER_FOUND);
+        }
+        AnswerEntity answerEntity = answer.get();
+        answerEntity.setId(answerLikeUpdateDTO.getAnswerId());
+        answerEntity.setAnswer(answerEntity.getAnswer() + answerLikeUpdateDTO.getLikeUpdateValue());
+        return AnswerMapper.INSTANCE.entityToDTO(answerRepository.save(answerEntity));
+    }
+
     public void deleteAnswer(String id) throws AnswerNotFoundException {
         Optional<AnswerEntity> answer = answerRepository.findById(id);
         if(answer.isEmpty()){
