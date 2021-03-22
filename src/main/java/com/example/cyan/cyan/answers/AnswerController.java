@@ -1,8 +1,8 @@
 package com.example.cyan.cyan.answers;
 
-import com.example.cyan.cyan.exceptions.QuestionNotFoundException;
-import org.apache.coyote.Response;
+import com.example.cyan.cyan.exceptions.AnswerNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ public class AnswerController {
     @Autowired
     private AnswerService answerService;
 
-    @GetMapping("/questionId")
+    @GetMapping("/answer/{questionId}")
     public ResponseEntity<List<AnswerDTO>> getAllAnswersForAQuestion(@PathVariable String questionId){
         return ResponseEntity.ok().body(answerService.getAllAnswersForAQuestion(questionId));
     }
@@ -31,13 +31,14 @@ public class AnswerController {
         return ResponseEntity.ok().body(answerService.postAnswer(answerDTO));
     }
 
-//    @PutMapping("/question")
-//    public ResponseEntity<AnswerDTO> putAnswer(@RequestBody AnswerDTO answerDTO){
-//
-//    }
-//
-//    @DeleteMapping("/answer/{id}")
-//    public ResponseEntity<AnswerDTO> deleteAnswer(@PathVariable String id){
-//
-//    }
+    @PutMapping("/answer")
+    public ResponseEntity<AnswerDTO> putAnswer(@RequestBody AnswerDTO answerDTO) throws AnswerNotFoundException {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(answerService.putAnswer(answerDTO));
+    }
+
+    @DeleteMapping("/answer/{id}")
+    public ResponseEntity<AnswerDTO> deleteAnswer(@PathVariable String id) throws AnswerNotFoundException {
+        answerService.deleteAnswer(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }

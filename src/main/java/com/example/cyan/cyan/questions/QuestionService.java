@@ -31,6 +31,11 @@ public class QuestionService {
         throw new QuestionNotFoundException(ErrorConstants.NO_QUESTION_FOUND);
     }
 
+    public List<QuestionDTO> getAllQuestionsForAUser(String createdBy){
+        return questionRepository.findByCreatedBy(createdBy).stream()
+                .map(QuestionsMapper.INSTANCE::entityToDTO).collect(Collectors.toList());
+    }
+
     public List<QuestionDTO> getQuestionByTag(String tag){
         return questionRepository.findAll(QuestionJPAHelperSpecification.containsTag(tag))
                 .stream().map(QuestionsMapper.INSTANCE::entityToDTO).collect(Collectors.toList());
@@ -66,10 +71,10 @@ public class QuestionService {
 
     public void deleteQuestion(String id) throws QuestionNotFoundException {
         Optional<QuestionEntity> question = questionRepository.findById(id);
-        if(question.isPresent()){
-            questionRepository.delete(question.get());
-        }
-        else
+        if(question.isEmpty()){
             throw new QuestionNotFoundException(ErrorConstants.NO_QUESTION_FOUND);
+        }
+        questionRepository.delete(question.get());
+
     }
 }

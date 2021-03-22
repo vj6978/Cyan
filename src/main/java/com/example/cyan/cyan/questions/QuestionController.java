@@ -19,6 +19,11 @@ public class QuestionController {
         return ResponseEntity.ok().body(questionService.getAll());
     }
 
+    @GetMapping("/all/{createdBy}")
+    public ResponseEntity<List<QuestionDTO>> getAllQuestionsForAUser(String createdBy){
+        return ResponseEntity.ok().body(questionService.getAllQuestionsForAUser(createdBy));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<QuestionDTO> getQuestion(@PathVariable String id) throws QuestionNotFoundException {
         return ResponseEntity.ok().body(questionService.getQuestion(id));
