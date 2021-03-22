@@ -1,15 +1,11 @@
 package com.example.cyan.cyan.questions;
 
-import com.example.cyan.cyan.comments.CommentEntity;
 import com.example.cyan.cyan.constants.ErrorConstants;
 import com.example.cyan.cyan.exceptions.QuestionNotFoundException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,8 +14,6 @@ import java.util.stream.Collectors;
 public class QuestionService {
     @Autowired
     private QuestionRepository questionRepository;
-
-    private static final Logger logger = LoggerFactory.getLogger(QuestionService.class);
 
     public List<QuestionDTO> getAll(){
         return questionRepository.findAll().stream().map(QuestionsMapper.INSTANCE::entityToDTO).collect(Collectors.toList());
