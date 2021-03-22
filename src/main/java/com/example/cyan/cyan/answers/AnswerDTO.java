@@ -14,8 +14,8 @@ import java.util.List;
 public class AnswerDTO {
     String questionId;
     String answer;
-    String createdBy;
     Integer likes;
+    String createdBy;
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
     List<CommentEntity> comments;

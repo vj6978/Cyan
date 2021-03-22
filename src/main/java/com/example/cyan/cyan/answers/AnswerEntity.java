@@ -19,13 +19,12 @@ public class AnswerEntity {
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     String id;
+    String questionId;
     String answer;
-    String createdBy;
     Integer likes;
+    String createdBy;
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
     @OneToMany(mappedBy="id", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
     List<CommentEntity> comments;
-    @ManyToOne(fetch=FetchType.LAZY)
-    QuestionEntity questionEntity;
 }

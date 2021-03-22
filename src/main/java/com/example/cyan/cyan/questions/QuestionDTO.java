@@ -20,5 +20,4 @@ public class QuestionDTO {
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
     List<CommentEntity> comments;
-    List<AnswerEntity> answers;
 }

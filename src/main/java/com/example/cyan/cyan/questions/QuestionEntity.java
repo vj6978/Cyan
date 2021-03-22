@@ -28,6 +28,4 @@ public class QuestionEntity {
     LocalDateTime updatedOn;
     @OneToMany(mappedBy="id", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
     List<CommentEntity> comments;
-    @OneToMany(mappedBy="id", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
-    List<AnswerEntity> answers;
 }

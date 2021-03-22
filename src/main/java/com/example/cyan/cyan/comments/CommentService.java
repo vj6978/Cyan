@@ -10,11 +10,9 @@ import java.util.stream.Collectors;
 public class CommentService {
     @Autowired
     private CommentRepository commentRepository;
-    @Autowired
-    private CommentMapper commentMapper;
 
     public List<CommentDTO> getAllComments(){
         return commentRepository.findAll().stream()
-                .map(c->commentMapper.entityToDTO(c)).collect(Collectors.toList());
+                .map(CommentMapper.INSTANCE::entityToDTO).collect(Collectors.toList());
     }
 }

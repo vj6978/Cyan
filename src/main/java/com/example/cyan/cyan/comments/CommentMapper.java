@@ -1,27 +1,13 @@
 package com.example.cyan.cyan.comments;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-@Component
-public class CommentMapper {
-    public CommentEntity dtoToEntity(CommentDTO commentDTO){
-        CommentEntity commentEntity = new CommentEntity();
-        commentEntity.setComment(commentDTO.getComment());
-        commentEntity.setLikes(commentDTO.getLikes());
-        commentEntity.setCreatedBy(commentDTO.getCreatedBy());
-        commentEntity.setCreatedOn(commentDTO.getCreatedOn());
-        commentEntity.setUpdatedOn(commentDTO.getUpdatedOn());
-        return commentEntity;
-    }
+@Mapper
+public interface CommentMapper {
+    CommentMapper INSTANCE = Mappers.getMapper(CommentMapper.class);
 
-    public CommentDTO entityToDTO(CommentEntity commentEntity){
-        CommentDTO commentDTO = new CommentDTO();
-        commentDTO.setId(commentEntity.getId());
-        commentDTO.setComment(commentEntity.getComment());
-        commentDTO.setLikes(commentEntity.getLikes());
-        commentDTO.setCreatedBy(commentEntity.getCreatedBy());
-        commentDTO.setCreatedOn(commentEntity.getCreatedOn());
-        commentDTO.setUpdatedOn(commentEntity.getUpdatedOn());
-        return commentDTO;
-    }
+    CommentEntity dtoToEntity(CommentDTO commentDTO);
+
+    CommentDTO entityToDTO(CommentEntity commentEntity);
 }
