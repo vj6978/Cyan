@@ -1,6 +1,5 @@
 package com.example.cyan.cyan.questions;
 
-import com.example.cyan.cyan.answers.AnswerEntity;
 import com.example.cyan.cyan.comments.CommentEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
