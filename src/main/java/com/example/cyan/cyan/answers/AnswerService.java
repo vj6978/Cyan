@@ -54,7 +54,7 @@ public class AnswerService {
         }
         AnswerEntity answerEntity = answer.get();
         answerEntity.setId(answerLikeUpdateDTO.getAnswerId());
-        answerEntity.setAnswer(answerEntity.getAnswer() + answerLikeUpdateDTO.getLikeUpdateValue());
+        answerEntity.setLikes(answerEntity.getLikes() + answerLikeUpdateDTO.getLikeUpdateValue());
         return AnswerMapper.INSTANCE.entityToDTO(answerRepository.save(answerEntity));
     }
 
