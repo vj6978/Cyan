@@ -46,7 +46,7 @@ public class AnswerService {
             throw new AnswerNotFoundException(ErrorConstants.NO_ANSWER_FOUND);
         }
         AnswerEntity answerEntity = answer.get();
-        answerEntity.setId(answerUpdateDTO.getAnswerId());
+        answerEntity.setAnswerId(answerUpdateDTO.getAnswerId());
         answerEntity.setLikes(answerEntity.getLikes() + answerUpdateDTO.getLikeUpdateValue());
         return AnswerMapper.INSTANCE.entityToDTO(answerRepository.save(answerEntity));
     }

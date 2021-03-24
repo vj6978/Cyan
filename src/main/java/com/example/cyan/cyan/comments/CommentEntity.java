@@ -1,13 +1,18 @@
 package com.example.cyan.cyan.comments;
 
+import com.example.cyan.cyan.answers.AnswerEntity;
+import com.example.cyan.cyan.posts.PostsEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
@@ -20,11 +25,17 @@ public class CommentEntity {
     @Id
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
-    String id;
+    String commentId;
     String postId;
     String comment;
     Integer likes;
     String createdBy;
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="id", nullable = false)
+    AnswerEntity answerEntity;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="postId", nullable = false)
+    PostsEntity postsEntity;
 }

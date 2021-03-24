@@ -29,12 +29,12 @@ public class CommentService {
     }
 
     public CommentDTO putComment(CommentDTO commentDTO) throws CommentNoFoundException {
-        Optional<CommentEntity> commentEntity = commentRepository.findById(commentDTO.getId());
+        Optional<CommentEntity> commentEntity = commentRepository.findById(commentDTO.getCommentId());
         if(commentEntity.isEmpty()){
             throw new CommentNoFoundException(ErrorConstants.NO_COMMENT_FOUND);
         }
         CommentEntity comment = commentEntity.get();
-        comment.setId(commentDTO.getId());
+        comment.setCommentId(commentDTO.getCommentId());
         comment.setComment(commentDTO.getComment());
         comment.setLikes(commentDTO.getLikes());
         comment.setPostId(commentDTO.getPostId());

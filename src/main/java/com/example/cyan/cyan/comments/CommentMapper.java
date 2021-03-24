@@ -13,7 +13,7 @@ public interface CommentMapper {
     @Mapping(source="postId", target="postId")
     CommentEntity dtoToEntity(CommentDTO commentDTO);
 
-    @Mapping(source="id", target="id")
+    @Mapping(source="commentId", target="commentId")
     @Mapping(source="postId", target="postId")
     @Mapping(source="comment", target="comment")
     @Mapping(source="likes", target="likes")

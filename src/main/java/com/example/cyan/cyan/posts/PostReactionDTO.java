@@ -7,7 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PostReactionDTO {
-    String postId;
+public class PostReactionDTO extends PostsDTO{
     Integer reactionScore;
 }

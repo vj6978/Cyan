@@ -13,7 +13,7 @@ public interface AnswerMapper {
     @Mapping(source="createdBy", target="createdBy")
     AnswerEntity dtoToEntity(AnswerDTO answerDTO);
 
-    @Mapping(source="id", target="id")
+    @Mapping(source="answerId", target="answerId")
     @Mapping(source="questionId", target="questionId")
     @Mapping(source="answer", target="answer")
     @Mapping(source="likes", target="likes")
