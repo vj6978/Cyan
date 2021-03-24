@@ -1,6 +1,8 @@
 package com.example.cyan.cyan.posts;
 
+import com.example.cyan.cyan.constants.ErrorConstants;
 import com.example.cyan.cyan.exceptions.PostNotFoundException;
+import com.example.cyan.cyan.exceptions.PostTypeNotSupportedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,12 +47,12 @@ public class PostsController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<PostsDTO> postQuestion(@RequestBody PostsDTO postsDTO){
+    public ResponseEntity<PostsDTO> postQuestion(@RequestBody PostsDTO postsDTO) throws PostTypeNotSupportedException {
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 postsServices.stream()
                 .filter(postsService -> postsService.accept(postsDTO))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("This type is not supported!"))
+                .orElseThrow(() -> new PostTypeNotSupportedException(ErrorConstants.POST_TYPE_NOT_SUPPORTED))
                 .post(postsDTO));
     }
 
