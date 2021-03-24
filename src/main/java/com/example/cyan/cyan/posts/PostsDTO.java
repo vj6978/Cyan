@@ -5,14 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public abstract class PostsDTO {
+public class PostsDTO implements Serializable {
     String postId;
+    String content;
     String tags;
     Integer likes;
     String postType;

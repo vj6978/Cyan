@@ -47,6 +47,7 @@ public class GenericPostServices {
         }
         PostsEntity post = postsEntity.get();
         post.setPostId(postsDTO.getPostId());
+        post.setContent(postsDTO.getContent());
         post.setPostType(postsDTO.getPostType());
         post.setCreatedBy(postsDTO.getCreatedBy());
         post.setTags(postsDTO.getTags());

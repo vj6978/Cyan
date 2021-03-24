@@ -1,7 +1,7 @@
 package com.example.cyan.cyan.answers;
 
 import com.example.cyan.cyan.comments.CommentEntity;
-import com.example.cyan.cyan.questions.QuestionEntity;
+import com.example.cyan.cyan.posts.PostsEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,7 +23,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name="ANSWER_TBL")
-public class AnswerEntity {
+public class AnswerEntity implements Serializable {
     @Id
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
@@ -37,5 +38,5 @@ public class AnswerEntity {
     List<CommentEntity> comments;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="postId", nullable = false)
-    QuestionEntity questionEntity;
+    PostsEntity postsEntity;
 }

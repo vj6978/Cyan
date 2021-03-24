@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,7 +22,7 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name="COMMENT_TBL")
 @NoArgsConstructor
-public class CommentEntity {
+public class CommentEntity implements Serializable {
     @Id
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
@@ -33,7 +34,7 @@ public class CommentEntity {
     LocalDateTime createdOn;
     LocalDateTime updatedOn;
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="id", nullable = false)
+    @JoinColumn(name="answerId", nullable = false)
     AnswerEntity answerEntity;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="postId", nullable = false)
