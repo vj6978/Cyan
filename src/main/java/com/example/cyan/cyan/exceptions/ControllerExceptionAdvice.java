@@ -30,4 +30,9 @@ public class ControllerExceptionAdvice extends ResponseEntityExceptionHandler {
         APIError error = new APIError(HttpStatus.NOT_FOUND, ErrorConstants.NO_POST_FOUND);
         return ResponseEntity.badRequest().body(error);
     }
+    @ExceptionHandler(value={PostTypeNotSupportedException.class})
+    public ResponseEntity<APIError> handlePostTypeNotSupported(){
+        APIError error = new APIError(HttpStatus.NOT_ACCEPTABLE, ErrorConstants.POST_TYPE_NOT_SUPPORTED);
+        return ResponseEntity.badRequest().body(error);
+    }
 }
