@@ -1,8 +1,10 @@
 package com.example.cyan.cyan.posts;
 
+import com.example.cyan.cyan.answers.AnswerService;
 import com.example.cyan.cyan.comments.CommentService;
 import com.example.cyan.cyan.constants.ErrorConstants;
 import com.example.cyan.cyan.exceptions.PostNotFoundException;
+import com.example.cyan.cyan.posts.constants.PostTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,8 @@ public class PostsService {
     private PostsRepository postsRepository;
     @Autowired
     private CommentService commentService;
+    @Autowired
+    private AnswerService answerService;
 
     public List<PostsTemplateDTO> prepareUserPosts(String createdBy){
         List<PostsTemplateDTO> posts = new ArrayList<>();
@@ -28,6 +32,10 @@ public class PostsService {
             for (PostsDTO post : postsForUser) {
                 PostsTemplateDTO postsTemplateDTO = new PostsTemplateDTO();
                 postsTemplateDTO.setPost(post);
+                //If the post is a question, get all answers associated with that question.
+                if(post.getPostType().equals(PostTypes.QUESTION.name())){
+                    postsTemplateDTO.setAnswers(answerService.getAllAnswersForAQuestion(post.getPostId()));
+                }
                 postsTemplateDTO.setCommentDTO(commentService.getAllCommentsOnAPost(post.getPostId()));
                 posts.add(postsTemplateDTO);
             }

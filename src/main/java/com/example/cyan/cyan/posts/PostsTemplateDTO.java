@@ -1,5 +1,6 @@
 package com.example.cyan.cyan.posts;
 
+import com.example.cyan.cyan.answers.AnswerDTO;
 import com.example.cyan.cyan.comments.CommentDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,5 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 public class PostsTemplateDTO {
     PostsDTO post;
+    List<AnswerDTO> answers;
     List<CommentDTO> commentDTO;
 }
